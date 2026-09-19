@@ -61,9 +61,14 @@ class AboutPage extends StatelessWidget {
 
 // The PDF lives in web/, not lib/assets/, so it's served as a static file
 // at the site root rather than needing rootBundle + blob-URL plumbing.
+//
+// Deliberately navigates the current tab (no webOnlyWindowName: "_blank"):
+// mobile Safari and Chrome silently block window.open() popups triggered
+// from an async callback once the user-gesture context lapses across the
+// await, so "_blank" worked on desktop but quietly failed on mobile.
 Future<void> _downloadCv(BuildContext context) async {
   final uri = Uri.base.resolve("Rohan_Patel_Resume.pdf");
-  final opened = await launchUrl(uri, webOnlyWindowName: "_blank");
+  final opened = await launchUrl(uri);
   if (!opened && context.mounted) {
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(content: Text("Couldn't open the CV. Try again shortly.")),

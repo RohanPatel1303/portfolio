@@ -77,7 +77,6 @@ switches the nav rail to a `NavigationBar`.
   time. Submissions only work on an actual Netlify deploy — set the
   notification address in that site's Forms settings. Locally or on any other
   host the POST 404s and the form shows the error snackbar.
-- **Download CV** on the About page shows a snackbar instead of opening a PDF.
 - **Project thumbnails** are flat colour placeholders. Real Play Store
   screenshots for Kaizen, Tech HRMS, and Opal ePOD should replace `_Thumb`.
 - **Fonts load over HTTP** via `google_fonts`, which causes a reflow on first
