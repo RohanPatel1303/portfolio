@@ -82,10 +82,61 @@ const List<String> skills = [
   "Hive", "SQLite", "Platform channels", "Jetpack Compose", "React Native", "GitHub Actions",
 ];
 
-const List<String> certifications = [
-  "Android Mobile Application Development",
-  "User Interface in Android Studio",
-  "Version Control",
-  "Git and GitHub",
-  "Principles of UX/UI Design",
+class Certification {
+  final String title;
+  final String issuer;
+  final String date;
+
+  /// Coursera verification code, printed on the certificate. The public
+  /// verify page is proof a recruiter can trust; a PDF we host is not.
+  final String verifyId;
+
+  const Certification({
+    required this.title,
+    required this.issuer,
+    required this.date,
+    required this.verifyId,
+  });
+
+  String get verifyUrl => "https://coursera.org/verify/$verifyId";
+}
+
+// Newest first. Source PDFs are in assets/certificates/, named by verifyId.
+const List<Certification> certifications = [
+  Certification(
+    title: "Create the User Interface in Android Studio",
+    issuer: "Meta",
+    date: "Sep 2026",
+    verifyId: "LYNPUR1WRD5Z",
+  ),
+  Certification(
+    title: "Principles of UX/UI Design",
+    issuer: "Meta",
+    date: "Jun 2026",
+    verifyId: "9TWR21W5303C",
+  ),
+  Certification(
+    title: "Getting Started with Flutter & Dart",
+    issuer: "Packt",
+    date: "Jun 2026",
+    verifyId: "KEKN8THI5J6R",
+  ),
+  Certification(
+    title: "Programming Fundamentals in Kotlin",
+    issuer: "Meta",
+    date: "May 2026",
+    verifyId: "PRT5I6HRFG2N",
+  ),
+  Certification(
+    title: "Version Control",
+    issuer: "Meta",
+    date: "May 2026",
+    verifyId: "NLSFHWMYYACK",
+  ),
+  Certification(
+    title: "Introduction to Android Mobile Application Development",
+    issuer: "Meta",
+    date: "May 2026",
+    verifyId: "DPNFOHEK2ZXY",
+  ),
 ];

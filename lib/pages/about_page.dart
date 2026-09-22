@@ -39,12 +39,8 @@ class AboutPage extends StatelessWidget {
           const SectionHeader("Experience and education", note: "Newest first"),
           const TimelineView(entries: timeline),
 
-          const SectionHeader("Certifications", note: "Coursework"),
-          Wrap(
-            spacing: Gap.x2,
-            runSpacing: Gap.x2,
-            children: [for (final c in certifications) Chip(label: Text(c))],
-          ),
+          const SectionHeader("Certifications", note: "Verified on Coursera"),
+          for (final c in certifications) _CertTile(cert: c),
 
           Gap.h8,
           Text(
@@ -72,6 +68,39 @@ Future<void> _downloadCv(BuildContext context) async {
   if (!opened && context.mounted) {
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(content: Text("Couldn't open the CV. Try again shortly.")),
+    );
+  }
+}
+
+/// Issuer and date sit in the subtitle rather than a tooltip so they are
+/// readable on touch devices. Tapping opens Coursera's public verify page.
+class _CertTile extends StatelessWidget {
+  const _CertTile({required this.cert});
+
+  final Certification cert;
+
+  Future<void> _open(BuildContext context) async {
+    final uri = Uri.parse(cert.verifyUrl);
+    if (!await launchUrl(uri, mode: LaunchMode.externalApplication)) {
+      if (context.mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text("Could not open ${cert.verifyUrl}")),
+        );
+      }
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final scheme = Theme.of(context).colorScheme;
+    return ListTile(
+      contentPadding: const EdgeInsets.symmetric(horizontal: Gap.x3),
+      shape: const RoundedRectangleBorder(borderRadius: Radii.allMd),
+      leading: Icon(Icons.workspace_premium_outlined, color: scheme.primary),
+      title: Text(cert.title),
+      subtitle: Text("${cert.issuer} · ${cert.date}"),
+      trailing: Icon(Icons.open_in_new_rounded, color: scheme.onSurfaceVariant),
+      onTap: () => _open(context),
     );
   }
 }
