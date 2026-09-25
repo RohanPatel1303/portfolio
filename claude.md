@@ -84,9 +84,6 @@ switches the nav rail to a `NavigationBar`.
 - **Fonts load over HTTP** via `google_fonts`, which causes a reflow on first
   paint. Bundling the three families in `assets/fonts/` would fix it.
 - **No tests exist yet.**
-- **This code has never been compile-verified.** It was written without a
-  Flutter SDK available. Expect analyzer errors on first run. A known one:
-  `CardTheme` became `CardThemeData` in a recent release.
 
 ## Web caveat
 
