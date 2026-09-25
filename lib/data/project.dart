@@ -19,6 +19,9 @@ class Project {
   /// Null for work that is not publicly linkable.
   final String? url;
 
+  /// Asset path of a phone screenshot. Null falls back to a tinted mockup.
+  final String? screenshot;
+
   const Project({
     required this.name,
     required this.blurb,
@@ -26,6 +29,7 @@ class Project {
     required this.tags,
     required this.tint,
     this.url,
+    this.screenshot,
   });
 }
 
@@ -41,6 +45,7 @@ const List<Project> projects = [
     tags: {ProjectTag.flutter},
     tint: Color(0xFF00C2A8),
     url: "https://play.google.com/store/apps/details?id=com.techelecon.kaizen",
+    screenshot: "assets/screenshots/kaizen.jpg",
   ),
   Project(
     name: "Tech HRMS",
@@ -52,6 +57,7 @@ const List<Project> projects = [
     tags: {ProjectTag.flutter},
     tint: Color(0xFFFF3D7F),
     url: "https://play.google.com/store/apps/details?id=com.techelecon.tech_hrms",
+    screenshot: "assets/screenshots/tech_hrms.jpg",
   ),
   Project(
     name: "Opal ePOD",
@@ -63,6 +69,7 @@ const List<Project> projects = [
     tags: {ProjectTag.flutter, ProjectTag.reactNative},
     tint: Color(0xFF6C4CFF),
     url: "https://play.google.com/store/apps/details?id=com.opalepod.opalepod",
+    screenshot: "assets/screenshots/opal_epod.jpg",
   ),
   Project(
     name: "Scanner plugin",

@@ -78,5 +78,9 @@ abstract final class Breakpoints {
       MediaQuery.sizeOf(c).width < medium;
 }
 
+/// Width of the phone thumbnail on a project card. 88 is the smallest at
+/// which a screenshot's layout is still legible rather than a colour smear.
+const double kProjectThumbWidth = 88;
+
 /// Max width of the reading column.
 const double kContentWidth = 960;

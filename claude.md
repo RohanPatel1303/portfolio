@@ -77,8 +77,10 @@ switches the nav rail to a `NavigationBar`.
   time. Submissions only work on an actual Netlify deploy — set the
   notification address in that site's Forms settings. Locally or on any other
   host the POST 404s and the form shows the error snackbar.
-- **Project thumbnails** are flat colour placeholders. Real Play Store
-  screenshots for Kaizen, Tech HRMS, and Opal ePOD should replace `_Thumb`.
+- **Project thumbnails**: Kaizen, Tech HRMS, and Opal ePOD show Play Store
+  screenshots from `assets/screenshots/`. Scanner plugin, Fuel Management,
+  and Noise Level Monitor have no public app and still use the tinted
+  mockup; set `Project.screenshot` to add one.
 - **Fonts load over HTTP** via `google_fonts`, which causes a reflow on first
   paint. Bundling the three families in `assets/fonts/` would fix it.
 - **No tests exist yet.**
